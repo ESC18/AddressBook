@@ -16,3 +16,12 @@ button {
 .hidden {
     display: none;
 }
+
+span {
+    border-radius: 5px;
+    display: block;
+    margin: 10px;
+    margin: 15px;
+    background-color: #151515;
+    color: white;
+}
