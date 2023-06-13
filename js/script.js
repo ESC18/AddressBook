@@ -21,16 +21,28 @@ function submit(event, bookButton) {
     event.preventDefault();
     let firstName = document.getElementById("firstName").value;
     let lastName = document.getElementById("lastName").value;
+    let middleName = document.getElementById("middleName").value;
+    let newName = new Names(firstName,middleName,lastName);
     hideForm(bookButton);
-    display(firstName,lastName);
-    form.reset()
+    display(newName);
+    form.reset();
 }
 
-function display(firstName,lastName) {
-    const div = document.getElementById("container");
-    let createSpan = document.createElement("span");
-    createSpan.innerHTML = firstName + " " + lastName;
-    div.appendChild(createSpan);
+function display(newName) {
+    /*
+    Step 1: new div for new contact row
+    step 2: new span for each info item in contact
+    step 3: append spans to div
+    step 4: append div to body
+    */
+    let body = document.querySelector("body");
+    let div = document.createElement("div");
+    for (let xname in newName) {
+        let span = document.createElement("span");
+        span.innerHTML = newName[xname];
+        div.appendChild(span);
+    }
+    body.append(div);
 }
 
 function hideForm(bookButton) {
@@ -50,4 +62,10 @@ window.onload = function () {
     bookButton.addEventListener("click", (event) => showForm(bookButton));
     let form = document.getElementById("form");
     form.addEventListener("submit", (event) => submit(event, bookButton))
+}
+
+function Names(firstName,middleName,lastName) {
+    this.firstName = firstName;
+    this.middleName = middleName
+    this.lastName = lastName;
 }
