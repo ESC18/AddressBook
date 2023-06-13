@@ -29,12 +29,6 @@ function submit(event, bookButton) {
 }
 
 function display(newName) {
-    /*
-    Step 1: new div for new contact row
-    step 2: new span for each info item in contact
-    step 3: append spans to div
-    step 4: append div to body
-    */
     let body = document.querySelector("body");
     let div = document.createElement("div");
     for (let xname in newName) {
